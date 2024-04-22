@@ -1,4 +1,4 @@
-/*Theme Name: Religion
+/*Theme Name: RELIG
 Theme URI: https://aryalrajiv.com.np
 Author: Rajiv Aryal
 Author URI: https://aryalrajiv.com.np
@@ -9,3 +9,10 @@ License URI: <https://www.gnu.org/licenses/gpl-2.0.html>
 Text Domain: Rajiv_blog_theme
 Tags: custom-background
 */
+* {
+    box-sizing: border-box;
+  }
+  body {
+      background-color: #f9f9f9;
+      font-family: Helvetica;
+  }
