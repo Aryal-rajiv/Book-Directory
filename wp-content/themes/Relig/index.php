@@ -1,8 +1,19 @@
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-  <head>
-    <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="profile" href="https://gmpg.org/xfn/11">
-    <?php wp_head(); ?>
-  </head>
+<?php get_header(); ?>
+<main class="wrap">
+  <section class="content-area content-thin">
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+      <article class="article-loop">
+        <header>
+          <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+          By: <?php the_author(); ?>
+        </header>
+        <?php the_excerpt(); ?>
+      </article>
+<?php endwhile; else : ?>
+      <article>
+        <p>Sorry, no posts were found!</p>
+      </article>
+<?php endif; ?>
+  </section><?php get_sidebar(); ?>
+</main>
+<?php get_footer(); ?>
