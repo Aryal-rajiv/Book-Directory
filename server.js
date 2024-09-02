@@ -47,8 +47,30 @@ const id = req.params.id;
 const updateBookData = req.body;
 
 try{
-    
+    const result = await bookCollections.updateOne(
+        {_id: new ObjectId(id)},
+        {$set: {...updateBookData}},
+        {upsert: true}
+    );
+    res.send(result);
+} catch (error) {
+    console.error("Error updating book:", error);
+    res.status(500).send("An error occurre while updating the book.");
 }
 
+});
 
+//delete book data
+
+app.delete("/bookd/:id", asysnc (req, res) => {
+    const category = req.params.category;
+    try{
+        const result = await bookCollection.find({ category:
+            category}).toArray();
+            res.send(result);
+        })catch(error) {
+            console.error("error getting book:", error);
+            res.status(500).send("An  error occured while getting the book.")
+        }
+    
 });
