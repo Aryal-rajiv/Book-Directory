@@ -62,15 +62,41 @@ try{
 
 //delete book data
 
-app.delete("/bookd/:id", asysnc (req, res) => {
+
+app.delete("/books/:id" , aysnc (req, res) => {
+    const id = req.params.id;
+    try{
+        const result = await bookCollections.deleteOne({ _id: new ObjectId(id)});
+        res.send(result);
+    }catch (error) {
+        console.error("Error deleting book:" , error);
+        res.status(500).send("An error occurred while deleting the book.");
+    }
+});
+// get book with Category
+app.get("/all_books/:category", async (req, res) =>
+{
     const category = req.params.category;
     try{
         const result = await bookCollection.find({ category:
-            category}).toArray();
-            res.send(result);
-        })catch(error) {
-            console.error("error getting book:", error);
-            res.status(500).send("An  error occured while getting the book.")
-        }
-    
+            category
+        }).toArray();
+        res.send(result);
+    }catch (error){
+        console.error("Error getiing book:", error);
+        res.status(500).send("An Error occurred while getting the book.");
+    }
 });
+ //get book with auther name
+ app.get("/books/:author", aysnc (req, res) => {
+    const author = req.params.author;
+    try{
+        const result =await bookCollection.find({authorName: author}).toArray();
+    } catch (error) {
+        console.error("Error getting book:", error);
+        res.stauts(500).send("An error occurred while getting thr book.");
+
+    }
+ });
+
+
