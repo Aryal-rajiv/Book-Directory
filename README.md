@@ -9,8 +9,8 @@ A RESTful API built with Express.js and MongoDB to manage a directory of books. 
 
 🚀 Getting Started
 Installation
-git clone https://github.com/your-username/book-directory.git
-cd book-directory
+git clone https://github.com/Aryal-rajiv/Book-Directory
+cd BOOK-DIRECTORY
 npm install
 
 Environment Setup
